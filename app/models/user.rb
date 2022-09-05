@@ -11,9 +11,6 @@ class User < ApplicationRecord
 
   has_many :reviews, dependent: :destroy
 
-  after_create do
-    customer=Stripe::Customer.create(email: email)
-    update(stripe_id:customer.id)
-  end
+
 
 end
