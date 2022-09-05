@@ -19,7 +19,6 @@ gem "redis", "~> 4.0"
 gem "sassc-rails" # Use Sass to process CSS
 gem "sprockets-rails"
 gem "stimulus-rails"
-gem "stripe-rails"
 gem "tailwindcss-rails"
 gem "turbo-rails"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ] # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
