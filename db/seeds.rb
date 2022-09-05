@@ -27,12 +27,3 @@ end
     Review.create(reviewable: property, rating: (1..5).to_a.sample, title: Faker::Lorem.word, body: Faker::Lorem.paragraph, user: User.all.sample)
   end
 end
-
-CSV.foreach("db/x-ken-all.csv", encoding: 'UTF-8') do |info|
-  Postal.create(
-    postal_code: info[0],
-    prefecture: info[1],
-    city: info[2],
-    town: info[3],
-    )
-end
