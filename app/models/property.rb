@@ -28,20 +28,5 @@ class Property < ApplicationRecord
   end
 
 
-  after_create do
-    product = Stripe::Product.create( #{
-      name: name
-      #,
-      #description: 'Comfortable cotton t-shirt',
-      #images: [URI("/assets/item/property_1.jpg")],
-      #}
-      )
 
-    price = Stripe::Price.create({
-    product: product.id,
-    unit_amount: self.price_cents,
-    currency: 'jpy',
-    })
-    update(stripe_property_id:price.id)
-  end
 end
