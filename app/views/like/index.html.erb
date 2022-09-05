@@ -1,0 +1,39 @@
+
+<html>
+
+<body>
+
+<div class="drawer drawer--left">
+  <main class="p-home Container">
+
+    <section id="recommend" class="Section Section--list">
+        <%if @favorite_posts.length==0%>
+        <h2 class="Section-title js-scrollReveal">YOU HAVE NO LIKE LIST</h2>
+        <%else%>
+        <h2 class="Section-title js-scrollReveal">YOUR LIKE LIST</h2>
+        <%end%>
+        <div class="Flex Flex--center t-flex t-md-gutterReset">
+          <% @favorite_posts.each do |post|%>
+              <div class="Flex-col t-widthHalf t-md-width4of12 t-xl-width3of12 js-scrollReveal-delay">
+                <%= render post %>
+              </div>
+          <%end%>
+        </div>
+    </section>
+  <div class="Section Section--list">
+    <h2 class="Section-title js-scrollReveal-delay">RECOMMEND ITEM</h2>
+    <div class="Flex Flex--center t-flex t-md-gutterReset">
+      <% @prop.each do |post|%>
+        <div class="Flex-col t-width4of12 t-md-width4of12 t-xl-width4of12 js-scrollReveal-delay">
+          <%= render post %>
+        </div>
+      <%end%>
+    </div>
+  </div>
+
+  </main>
+</div>
+
+<script src="https://file002.shop-pro.jp/PA01399/941/js/app.js?=180719"></script><script type="text/javascript" src="https://store.tysons.jp/js/cart.js" ></script>
+</body></html>
+

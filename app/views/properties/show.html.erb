@@ -1,0 +1,116 @@
+
+<div class="drawer drawer--left">
+  <main class="p-detail">
+      <section class="Section Section--single">
+        <div class="Flex t-flex">
+          <div class="Flex-col t-widthFull t-md-widthHalf">
+          <div class="Gallery js-scrollReveal-delay">
+              <div id="js-gallery-main" class="Gallery-slide Gallery-slide--main">
+                <% @property.images.each do |image| %>
+                  <div><p class="sample2"><%= image_tag image, :size => '1800x20', :alt => ''%></p></div>
+                <% end %>
+            </div>
+            <div id="js-gallery-nav" class="Gallery-slide Gallery-slide--nav">
+              <% @property.images.each do |image| %>
+              <div><p class="sample2"><%= image_tag image, :size => '1800x20', :alt => ''%></p></div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="Flex-col t-md-widthHalf Product">
+          <div class="Product-info">
+            <h2 class="Product-info-title js-scrollReveal-delay">
+              <%= @property.name %>
+            </h2>
+            <div class="Product-info-body js-scrollReveal-delay">
+                  <p>
+                  <div >
+                  <%= link_to "", data: { controller: "share", action: "share#share" }, class: "mr-4" do %>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block relative" style="bottom: 1px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                    </svg>
+                    <span>Share</span>
+                  <% end %>
+            
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 inline-block relative cursor-pointer"
+                    data-controller="favorites"
+                    data-user-logged-in="<%= user_signed_in? %>"
+                    data-user-id="<%= current_user&.id %>"
+                    data-property-id="<%= @property.id %>"
+                    data-favorite-id="<%= @property.favorites.find_by(user: current_user)&.id %>"
+                    data-favorited="<%= @property.favorited_by?(current_user) %>"
+                    data-action="click->favorites#favorite"
+                    data-favorited-color="red"
+                    data-unfavorited-color="white"
+                    fill="<%= @property.favorited_by?(current_user) ? 'red' : 'white' %>"
+                    style="bottom: 1px;"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    <span class="ml-1 cursor-pointer">Save</span>
+                  </svg>
+            </div>
+                  <br>
+                  <br>
+                  <p class="text-base text-gray-900"><%= truncate @property.description, length: 200 %></p>
+                  </p>
+          </div>
+        </div>
+            
+          
+
+            
+
+        <%= form_with(url: cart_add_path) do |f| %>
+        <div class="Product-spec js-scrollReveal-delay">
+            <table>
+              <tr>
+                <th>販売価格</th>
+                <td>
+                  <div class="product_sales">
+                   <%=humanized_money_with_symbol(@property.price)%> (税込)
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th>サイズ</th>
+                <td><%= f.select :size, options_for_select({XS: 1, S: 2}, 1),{},{class:"value_size bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"}%></td>
+              </tr>
+              <tr>
+                <th>数量</th>
+                <td><%= f.number_field :quantity, pattern:"[0-9]*" ,value: 1, min: 1 ,class:"value_size bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"%></td>
+              </tr>          
+              <%= f.hidden_field :id, value: @property.id %>
+            </table>
+            
+        </div>
+        <div class="Product-cartBtn js-scrollReveal-delay">
+          <%= button_tag( :class => "Button Button--fill") do %>
+          <svg viewBox="0 0 32 32" class="icon" aria-hidden="true"><use xlink:href="#icon-cart" /></svg>Add To Cart
+        </div>
+        <% end %>
+      <% end %>
+
+    </section>
+    <div class="Section Section--single">
+      <h2 class="Section-title js-scrollReveal-delay">RECOMMEND ITEM</h2>
+      <div class="Flex Flex--center t-flex t-md-gutterReset">
+        <% @prop.each do |post|%>
+          <div class="Flex-col t-width4of12 t-md-width4of12 t-xl-width4of12 js-scrollReveal-delay">
+            <%= render post %>
+          </div>
+        <%end%>
+      </div>
+    </div>
+    
+  </main>
+</div>
+
+
+
+
+<script src="https://file002.shop-pro.jp/PA01399/941/js/app.js?=180719"></script><script type="text/javascript" src="https://store.tysons.jp/js/cart.js" ></script>

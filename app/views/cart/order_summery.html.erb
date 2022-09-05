@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    Tailwind CSS shopping cart list with coupon, order summary using heroicons
+  </title>
+  <link
+    href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+    rel="stylesheet"
+  />
+</head>
+
+
+      </html>
+
+<script src="https://file002.shop-pro.jp/PA01399/941/js/app.js?=180719"></script><script type="text/javascript" src="https://store.tysons.jp/js/cart.js" ></script>
+
+
+
+
+<div class="container p-8 mx-auto mt-12 js-scrollReveal-delay">
+
+<div class="mt-10 sm:mt-0">
+<div class="md:grid md:grid-cols-3 md:gap-6">
+<div class="md:col-span-1">
+<div class="px-4 sm:px-0">
+        <div class="py-4 rounded-md shadow ">
+          <h3 class="text-xl font-bold text-blue-600">Order Summary</h3>
+
+          <% @cart.cart_items.each do |cart_item| %>
+              <% property = cart_item.property %>
+          <div class="flex justify-between px-4">
+          
+            <span class="font-bold"><%= image_tag property.default_image ,class:"marukusuru3 h-14 w-14 js-scrollReveal-delay"%>&nbsp;&nbsp;<%= property.name %>,<% if cart_item.size.to_i == 1 then %>
+            XS
+            <% else %>
+            S
+            <% end %> × <%= cart_item.quantity %></span>
+            <span class="font-bold"><%= property.price * cart_item.quantity %></span>
+          </div>        
+          <% end %>
+
+        </br>
+        <div class="flex justify-between px-4">
+          <span class="font-bold">配送料(全国一律)</span>
+          <span class="font-bold">¥700</span>
+        </div>
+          <div
+            class="
+              flex
+              items-center
+              justify-between
+              px-4
+              py-2
+              mt-3
+              border-t-2
+            "
+          >
+          
+            <span class="text-xl font-bold">Total</span>
+            <span class="text-2xl font-bold">¥<%= @cart.total.to_i+700 %></span>
+          </div>
+
+      </div>
+</div>
+</div>
+<div class="mt-5 md:mt-0 md:col-span-2">
+<div class="shadow overflow-hidden sm:rounded-md">
+<div class="px-4 py-5 bg-white sm:p-6">
+
+
+
+
+
+
+
+  <div class="grid grid-cols-6 gap-6">
+  <div class="col-span-6 sm:col-span-4">
+      <label for="first-name" class="block text-sm font-medium text-gray-700">名前</label>
+      <%=@cart.name%>
+  </div>
+
+
+  <div class="col-span-6 sm:col-span-3">
+      <label for="city" class="block text-sm font-medium text-gray-700">郵便番号</label>
+      <%=@cart.post_code%>
+  </div>
+
+
+
+  <div class="col-span-6 ">
+      <label for="country" class="block text-sm font-medium text-gray-700">住所</label>
+      <%=@cart.prefecture%><%=@cart.municipality%><%=@cart.house_number%>
+  </div>
+  
+  <div class="col-span-6 sm:col-span-3">
+      <label for="postal-code" class="block text-sm font-medium text-gray-700">電話番号</label>
+      <%=@cart.phone_number%>
+  </div>
+
+  <div class="col-span-6 sm:col-span-3">
+      <label for="postal-code" class="block text-sm font-medium text-gray-700">メールアドレス</label>
+      <%=@cart.email%>
+  </div>
+
+
+  </div>
+
+
+
+
+</div>
+<div class="px-4 py-3 bg-gray-50 sm:px-6 btnLeft">
+<%=link_to "戻る",cart_confirm_path, style:"text-decoration:none;" ,class:" text-left inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white hover:text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"%>
+</div>
+<div class="px-4 py-3 bg-gray-50 sm:px-6 btnRight">
+<%= button_to "購入",checkout_create_path ,data:{turbo:false},remote:true,class:"mousepointer-hand  inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"%>
+  
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
