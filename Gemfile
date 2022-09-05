@@ -58,3 +58,7 @@ group :test do
   gem "shoulda-matchers", "~> 5.0"
 end
 gem "sassc-rails"
+
+group :production, :staging do
+  gem 'unicorn'
+end
