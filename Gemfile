@@ -70,3 +70,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+group :production, :staging do
+  gem 'unicorn'
+end
