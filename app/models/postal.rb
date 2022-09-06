@@ -1,2 +1,0 @@
-class Postal < ApplicationRecord
-end
