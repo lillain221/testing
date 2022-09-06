@@ -1,0 +1,70 @@
+$airbnb-logo: #eb4c60;
+
+.airbnb-pink-gradient {
+  background: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%) !important;
+  background-image: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%) !important;
+}
+
+p.sample1 img {
+  border-radius: 15px; /* ちょっとだけ角丸 */
+}
+p.sample2 img {
+  border-radius: 10px; /* 大きく角丸 */
+}
+
+input[type="number"]::-webkit-outer-spin-button, 
+input[type="number"]::-webkit-inner-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+} 
+
+
+.marukusuru {  
+  border-radius: 10px 10px 0px 0px;
+}
+
+.marukusuru2 {  
+  border-radius: 0px 0px 10px 10px;
+}
+
+.marukusuru3 {  
+  border-radius: 15px 15px 15px 15px;
+}
+
+.btnLeft{
+  text-align: left;
+  float: left;
+}
+
+.btnRight{
+  text-align: right;
+}
+
+.mousepointer-hand {
+  cursor: pointer;
+}
+
+.value_size{
+  width: 80px;
+}
+.value_size2{
+  width: 5%;
+}
+body,
+#wrapper_food {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+  margin-top: auto;
+}
+
+
+
+p.select-auto {
+  position:absolute;
+  right:0;
+  top:0;
+}

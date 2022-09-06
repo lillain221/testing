@@ -1,0 +1,35 @@
+<%= link_to property_path(property),data:{turbo:false} do %>
+
+    <div class="group block w-full aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
+      <%= image_tag property.default_image, class: "object-cover pointer-events-none group-hover:opacity-40" %>
+      <button type="button" class="absolute inset-0 focus:outline-none">
+        <span class="sr-only">View details for IMG_4985.HEIC</span>
+      </button>
+
+      <div class="flex flex-row-reverse p-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-4 w-4 cursor-pointer"
+          data-controller="favorites"
+          data-user-logged-in="<%= user_signed_in? %>"
+          data-user-id="<%= current_user&.id %>"
+          data-property-id="<%= property.id %>"
+          data-favorite-id="<%= property.favorites.find_by(user: current_user)&.id %>"
+          data-favorited="<%= property.favorited_by?(current_user) %>"
+          data-action="click->favorites#favorite"
+          data-favorited-color="red"
+          data-unfavorited-color="#ced4da"
+          fill="<%= property.favorited_by?(current_user) ? 'red' : '#ced4da' %>"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+        </svg>
+      </div>
+    </div>
+    <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none"><%= property.name %>,  <%= humanized_money_with_symbol(property.price) %></p>
+
+
+<% end %>
+

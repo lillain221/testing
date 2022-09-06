@@ -1,0 +1,96 @@
+
+<html>
+
+<body>
+
+<div class="drawer drawer--left">
+  <section class="Container Masthead">
+  <div class="crosscover">
+    <div class="crosscover-list">
+      <div class="crosscover-item">
+        <div class="crosscover-overlay">
+          <div class="crosscover-island">
+            <h2 class="crosscover-title">ARMIS</h2>
+            <p class="crosscover-description">
+							   理想の体に理想の服を
+              <br>
+            </p>
+          </div>
+        </div>
+        <img src="https://zula.sg/wp-content/uploads/2017/07/chuu-2.jpg" alt="BEER"/>
+      </div>
+			
+      <div class="crosscover-item">
+        <div class="crosscover-overlay">
+          <div class="crosscover-island">
+            <h2 class="crosscover-title">FORTE </h2>
+            <p class="crosscover-description">
+              シンプルだから<br>
+              スタイルを最大限活かせる
+            </p>
+
+          </div>
+        </div>
+        <img src="https://i.pinimg.com/736x/ca/a6/3f/caa63f83a5b68225d2ae80a6d1597c68.jpg" alt="FOOD"/>
+      </div>
+    
+      <div class="crosscover-item">
+        <div class="crosscover-overlay">
+          <div class="crosscover-island">
+            <h2 class="crosscover-title">VISION</h2>
+            <p class="crosscover-description">
+              「細さ」と「上品さ」を兼ね備えた<br>
+              最高のブランドへ。
+            </p>
+          </div>
+        </div>
+        <img src="https://i.pinimg.com/564x/7a/f1/02/7af102bdd0daf4366e9fa583a3510b90.jpg" alt="BEER"/>
+      </div>
+
+      <div class="crosscover-item">
+        <div class="crosscover-overlay">
+          <div class="crosscover-island">
+            <h2 class="crosscover-title">STORY</h2>
+            <p class="crosscover-description">
+              ～服にも<ruby>物語<rt>ストーリー</rt></ruby>がある～<br>
+              生地からこだわって<br class="t-sm-none">仕上げた逸品。
+            </p>
+          </div>
+        </div>
+        <img src="https://i.pinimg.com/736x/2f/23/d1/2f23d13ac901e5e80d8b638c151ed131.jpg" alt="GOODS"/>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="Masthead-scroll js-scrollReveal-delay">
+    <a href="#recommend" data-masthead-scroll>
+      <svg viewBox="0 0 32 32" class="icon" aria-hidden="true"><use xlink:href="#icon-chevron-top" /></svg>
+    </a>
+  </div>
+  </section>
+
+
+  <main class="p-home Container">
+    <section id="recommend" class="Section Section--list">
+      <h2 class="Section-title js-scrollReveal">ITEM LIST</h2>
+      <div class="Flex Flex--center t-flex t-md-gutterReset">
+        <% @properties.each do |post|%>
+          <div class="Flex-col t-widthHalf t-md-width4of12 t-xl-width3of12 js-scrollReveal-delay">
+            <%= render post %>
+          </div>
+        <%end%>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="https://file002.shop-pro.jp/PA01399/941/js/app.js?=180719"></script><script type="text/javascript" src="https://store.tysons.jp/js/cart.js" ></script>
+
+</body>
+
+</html>
+
+
+
+
